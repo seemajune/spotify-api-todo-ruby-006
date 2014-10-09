@@ -1,16 +1,20 @@
 require 'json'
 require 'open-uri'
+require 'pry'
 
 class SpotifyChart
 
   attr_reader :base_url
 
   def initialize
-    @base_url = "?"
+    @base_url = "http://charts.spotify.com/api/charts/"  #chain pref and region 
   end
 
-  def get_url(preference, region)
+  def get_url(preference, region) 
+    # string = JSON.load(open(@base_url)) 
+    # string + "#{preference}" "#{region}" + "#{latest}"
     # return a string that is the base url + / + preference + / + region + / + latest
+    "#{@base_url}#{preference}/#{region}/latest"
   end
 
   def get_json(url)
